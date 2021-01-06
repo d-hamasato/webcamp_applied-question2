@@ -24,8 +24,8 @@ class BookCommentsController < ApplicationController
   end
   
   def correct_user
-    book = Book.find(params[:id])
-    if current_user.id != book.user_id
+    book_comment = BookComment.find(params[:id])
+    if current_user.id != book_comment.user_id
       redirect_to books_path
     end
   end
