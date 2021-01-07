@@ -22,4 +22,15 @@ class User < ApplicationRecord
     following.include?(user)
   end
   
+  def self.search(method, query)
+    if method == "full"
+      @users = User.where("name LIKE?", "#{query}")
+    elsif method == "forward"
+      @users = User.where("name LIKE?", "#{query}%")
+    elsif method == "backward"
+      @users = User.where("name LIKE?", "%#{query}")
+    elsif method == "partial"
+      @users = User.where("name LIKE?", "%#{query}%")
+    end
+  end
 end

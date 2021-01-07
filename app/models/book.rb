@@ -9,4 +9,16 @@ class Book < ApplicationRecord
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
+	
+	def self.search(method, query)
+    if method == "full"
+      @books = Book.where("title LIKE?", "#{query}")
+    elsif method == "forward"
+      @books = Book.where("title LIKE?", "#{query}%")
+    elsif method == "backward"
+      @books = Book.where("title LIKE?", "%#{query}")
+    elsif method == "partial"
+      @books = Book.where("title LIKE?", "%#{query}%")
+    end
+	end
 end

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">  
+    <div class='col-md-8 offset-md-1'>
+      <h2>Search for '<%= @query %>' in <%= @model_name %></h2>
+      <% if @model_name == "User" %>
+        <%= render 'users/index', users: @users %>
+      <% elsif @model_name == "Book" %>
+        <%= render 'books/index', books: @books %>
+      <% end %>
+    </div>
+  </div>
+</div>
