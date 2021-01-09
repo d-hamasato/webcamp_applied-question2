@@ -18,6 +18,14 @@ class User < ApplicationRecord
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}
   
+  def follow(user_id)
+    active_relationships.create(followed_id: user_id)
+  end
+  
+  def unfollow(user_id)
+    active_relationships.find_by(followed_id: user_id).destroy
+  end
+
   def following?(user)
     following.include?(user)
   end
