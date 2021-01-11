@@ -1,9 +1,8 @@
 class ThanksMailer < ApplicationMailer
   default from: 'example@gmail.com'
   
-  def welcome_email(user)
+  def complete_registration(user)
     @user = user
-    # @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: "会員登録が完了しました。" )
+    mail(:subject => "登録完了のお知らせ", to: @user.email)
   end
 end
