@@ -1,0 +1,9 @@
+<%= form_with model:[@user, @chat], local: true do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit %>
+<% end %>
+
+<% @chats.each do |chat| %>
+  <%= chat.content %>
+<% end %>

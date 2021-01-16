@@ -28,5 +28,6 @@
     <% else %>
       <%= link_to "フォローする", user_relationships_path(user), class: "btn btn-sm btn-outline-success btn-block", method: :post %>
     <% end %>
+  <%= link_to 'chatを始める', user_chats_path(user) %>
   <% end %>
 </div>
